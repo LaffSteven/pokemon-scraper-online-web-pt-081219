@@ -22,10 +22,10 @@ class Pokemon
   def self.find(id, db)   #find by ID number and return an Object 
     sql = <<-SQL 
       SELECT * FROM pokemon
-        WHERE id = ?
-        LIMIT 1 
-      SQL
+      WHERE id = ?
+      LIMIT 1 
+    SQL
 
-      db.execute(sql, id).map {|row| self.new(id: row[0], name: row[1], type: row[2], db: db)}.first  
+    db.execute(sql, id).map {|row| self.new(id: row[0], name: row[1], type: row[2], db: db)}.first  
   end 
 end
